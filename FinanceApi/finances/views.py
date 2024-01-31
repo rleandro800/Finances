@@ -1,6 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import viewsets, generics
+from .serializer import UserSerializers, UsersPaymentSerializer
+from .models.user import User
 
-def index(request):
-    return HttpResponse("funcionou?")
+class UsersViewSet(viewsets.ModelViewSet):
+    """Return all users"""
+    queryset = User.objects.all()
+    serializer_class = UserSerializers
+
+class UsersPaymentList(generics.ListAPIView):
+    """return User payment"""
+    
 
