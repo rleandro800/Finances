@@ -28,7 +28,7 @@ class HistoryItem extends StatelessWidget {
                 Text("${value.toStringAsFixed(2)} R\$", style: const TextStyle(fontSize: 18),)
               ],
             ),
-            const Text("Description: A very large text in English to show my ability to write wrong", softWrap: false,),
+            const Text("Description: LOREM BLA BLA BLA BLA bla bla bla bla", softWrap: false,),
           ],
         ),
       ),
