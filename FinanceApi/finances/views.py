@@ -1,7 +1,7 @@
 from rest_framework import viewsets, generics
-from .serializer import UserSerializers, UsersPaymentSerializer, PaymentSerializer
+from .serializer import UserSerializers, UsersTransactionSerializer, TransactionSerializer
 from .models.user import User
-from .models.payment import Payment
+from .models.transaction import Transaction
 
 
 
@@ -18,7 +18,7 @@ class UsersViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializers
 
-class UsersPaymentList(generics.ListAPIView):
+class UsersTransactionList(generics.ListAPIView):
     """
     ListAPIView for retrieving user payments.
 
@@ -28,7 +28,7 @@ class UsersPaymentList(generics.ListAPIView):
     Attributes:
         serializer_class (Serializer): The serializer class for payment objects.
     """
-    serializer_class = UsersPaymentSerializer
+    serializer_class = UsersTransactionSerializer
     ordering_fields = ['created_at']
     def get_queryset(self):
         """
@@ -37,10 +37,10 @@ class UsersPaymentList(generics.ListAPIView):
         Returns:
             QuerySet: The queryset of payments filtered by the user ID.
         """
-        queryset = Payment.objects.filter(user_id=self.kwargs['pk'])
+        queryset = Transaction.objects.filter(user_id=self.kwargs['pk'])
         return queryset
 
-class PaymentViewSet(viewsets.ModelViewSet):
+class TransactionViewSet(viewsets.ModelViewSet):
     """
     Viewset for managing payments.
 
@@ -50,8 +50,8 @@ class PaymentViewSet(viewsets.ModelViewSet):
         queryset (QuerySet): The queryset of all payments.
         serializer_class (Serializer): The serializer class for payment objects.
     """
-    queryset = Payment.objects.all()
-    serializer_class = PaymentSerializer
+    queryset = Transaction.objects.all()
+    serializer_class = TransactionSerializer
 
     def perform_create(self, serializer):
         """

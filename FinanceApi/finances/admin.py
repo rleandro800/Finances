@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models.user import User
-from .models.payment import Payment
+from .models.transaction import Transaction
 
 # Register your models here.
 class Users(admin.ModelAdmin):
@@ -11,11 +11,11 @@ class Users(admin.ModelAdmin):
 
 admin.site.register(User, Users)
 
-class Payments(admin.ModelAdmin):
+class Transactions(admin.ModelAdmin):
     list_display = ('id', 'user_id', 'value', 'is_debt', 'description')
     list_display_links = ('id',)
     search_fields = ('value',)
     list_per_page = 20 
 
-admin.site.register(Payment, Payments)
+admin.site.register(Transaction, Transactions)
 

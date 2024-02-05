@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 
 class HistoryItem extends StatelessWidget {
-  const HistoryItem({super.key, required this.isPayment, required this.value});
+  const HistoryItem({super.key, required this.isTransaction, required this.value});
 
-  final bool isPayment;
+  final bool isTransaction;
   final double value;
 
   @override
@@ -16,7 +16,7 @@ class HistoryItem extends StatelessWidget {
         decoration: BoxDecoration(
             border: Border.all(color: Colors.black12),
             borderRadius: BorderRadiusDirectional.circular(50),
-            color: isPayment ? Colors.green[300] : Colors.red[300],),
+            color: isTransaction ? Colors.green[300] : Colors.red[300],),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

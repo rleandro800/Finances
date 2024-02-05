@@ -10,11 +10,11 @@ class HistoryList extends StatefulWidget {
 
 class _HistoryListState extends State<HistoryList> {
   List<HistoryItem> data = [
-    HistoryItem(isPayment: true, value: 250.50),
-    HistoryItem(isPayment: true, value: 850.50),
-    HistoryItem(isPayment: true, value: 150.50),
-    HistoryItem(isPayment: false, value: 320.50),
-    HistoryItem(isPayment: true, value: 400.50),
+    HistoryItem(isTransaction: true, value: 250.50),
+    HistoryItem(isTransaction: true, value: 850.50),
+    HistoryItem(isTransaction: true, value: 150.50),
+    HistoryItem(isTransaction: false, value: 320.50),
+    HistoryItem(isTransaction: true, value: 400.50),
   ];
   @override
   Widget build(BuildContext context) {

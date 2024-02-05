@@ -1,7 +1,7 @@
 from django.db import models
 from .user import User
 
-class Payment(models.Model):
+class Transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_debt = models.BooleanField(default=False)
     value = models.FloatField()
