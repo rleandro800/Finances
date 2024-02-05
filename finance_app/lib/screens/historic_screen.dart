@@ -36,27 +36,26 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          scrollDirection: Axis.vertical,
           children: [
             Text("${_balance.toStringAsFixed(2).replaceAll('.', ',')}R\$",
                 style:
                     const TextStyle(fontSize: 60, fontWeight: FontWeight.bold)),
             FutureBuilder<Map<String, dynamic>>(
-              future: getUser(),
+              future: users,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return CircularProgressIndicator();
                 } else if (snapshot.hasError) {
                   return Text('Erro: ${snapshot.error}');
                 } else {
-                  Map<String, dynamic>? userData = snapshot.data;
+                Map<String, dynamic>? userData = snapshot.data;
                   if (userData != null) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        for (var entry in userData.entries)
-                          Text('${entry.key}: ${entry.value}'),
+                        Text(userData.toString()),
                       ],
                     );
                   } else {

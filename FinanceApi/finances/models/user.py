@@ -8,7 +8,15 @@ class User(models.Model):
     profession = models.CharField(max_length=100, null=True)
     create_at = models.DateTimeField(auto_now_add=True)
     modify_at = models.DateTimeField(auto_now=True)
-    delete_at =  models.DateTimeField(null=True, blank=True)
+
 
     def __str__(self):
         return self.name
+    
+    def modify_amount(self, value, isDebt):
+        if isDebt :
+            self.amount -= value
+        else :
+            self.amount +=value
+        self.save()
+        

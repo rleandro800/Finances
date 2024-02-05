@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:connectivity/connectivity.dart';
 
 const username = 'Vilas';
-const password = '--senha--!';
+const password = '--senha--';
 final basicAuth = 'Basic ${base64Encode(utf8.encode('$username:$password'))}';
 
 Future<Map<String, dynamic>> getUser() async {
-  String apiURL = "http://127.0.0.1:58104/api/users/";
+  String apiURL = "http://10.0.2.2:8000/api/users/3";
   bool isConnected = await checkInternetConnection();
 
   try {
@@ -21,8 +21,7 @@ Future<Map<String, dynamic>> getUser() async {
     );
 
     if (response.statusCode == 200) {
-      Map<String, dynamic> data = jsonDecode(response.body);
-      return data;
+      return jsonDecode(response.body);
     } else {
       throw Exception("Erro ao carregar os dados da API: ${response.statusCode}");
     }
@@ -30,11 +29,6 @@ Future<Map<String, dynamic>> getUser() async {
     print("----------------------------------------------------------");
     print('$e');
     print("----------------------------------------------------------");
-    if (isConnected) {
-      print("Conexão com a internet estabelecida");
-    } else {
-      print("Sem conexão com a internet");
-    }
     throw Exception("Erro durante a chamada de API: $e");
   }
 }
