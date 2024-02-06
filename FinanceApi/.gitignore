@@ -1,0 +1,9 @@
+**/__pycache__
+
+*.sqlite3
+*.pyc
+*.pyo
+*.pyd
+*.class
+*.py[co]
+*.swp
