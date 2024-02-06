@@ -1,40 +1,44 @@
-## Financial App
+# Financial App
 
 Welcome to the Financial App project! This endeavor merges my passion for finance and programming into a single digital platform aimed at assisting users in organizing their finances effectively.
 
-### Project Overview:
+## Project Overview:
 
 The Financial App project is currently under development, with a focus on creating a comprehensive solution for managing expenses, profits, and financial transactions.
 
-### Technologies Used:
+## Technologies Used:
 
 - **Mobile Development:** Flutter
 - **Backend Development:** Python
 - **Database:** MySQL
 - **DevOps:** Docker
 
-### Testing Guidelines:
+## Api Endpoints
 
-#### Database Testing:
+`/api/` - Main route (no return).
 
-To test the database functionality, follow these steps:
+`GET /api/users/` -  Retrieve all users (soon will be blocked).
 
-1. Create a Docker container using the official MySQL image.
-2. Set up the database with the following credentials:
-   
-   - **Name:** financeDB
-   - **User:** root
-   - **Password:** 1234
-   - **Port:** 3306
-   
-   Please note that these credentials are for testing purposes only.
+`POST /api/users/` - Add new user.
 
-#### Mobile App Testing:
+`GET /api/users/<id>` - Retrieve users with expecificed.
 
-To test the mobile app, proceed as follows:
+`PATCH /api/users/<id>` - Partially update user with specified ID.
 
-1. Install Android Studio on your development environment.
-2. Utilize a virtual device to install and run the application.
+`DELETE /api/users/<id>`  - Delete user with specified ID.
+
+`GET /api/transaction/` - Retrieve all transactions.
+
+`POST /api/transaction/` - Add a new transaction.
+
+`GET /api/transaction/<id>` - Retrieve transaction with specified ID.
+
+`DELETE /api/transaction/<id>` - Delete transaction with specified ID.
+
+`PATCH /api/transaction/<id>` - Partially update transaction with specified ID.
+
+`GET get-users-transaction/<int:pk>/transaction` - Retrieve transactions for a specific user (identified by their primary key).
+
 
 ### Note:
 
