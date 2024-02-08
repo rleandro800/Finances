@@ -1,39 +1,28 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:connectivity/connectivity.dart';
+import 'package:finance_app/services/connection.dart';
+import 'package:finance_app/models/user.dart';
 
-const username = 'Vilas';
-const password = '--senha--';
-final basicAuth = 'Basic ${base64Encode(utf8.encode('$username:$password'))}';
 
-Future<Map<String, dynamic>> getUser() async {
-  String apiURL = "http://10.0.2.2:8000/api/users/3";
-  bool isConnected = await checkInternetConnection();
 
+Future<User> getUser(int id) async {
+  String apiURL = "http://10.0.2.2:8000/api/users/$id";
   try {
-    if (!isConnected) {
-      throw Exception("Sem conexão com a internet");
-    }
+    final basicAuth = dotenv.env['API_BASIC'];
+    await checkInternetConnection();
 
     final response = await http.get(
       Uri.parse(apiURL),
-      headers: {'Authorization': basicAuth},
+      headers: {'Authorization': 'Basic $basicAuth'},
     );
-
     if (response.statusCode == 200) {
-      return jsonDecode(response.body);
+      return User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
     } else {
-      throw Exception("Erro ao carregar os dados da API: ${response.statusCode}");
+      throw Exception(
+          "Erro ao carregar os dados da API: ${response.statusCode}");
     }
   } catch (e) {
-    print("----------------------------------------------------------");
-    print('$e');
-    print("----------------------------------------------------------");
     throw Exception("Erro durante a chamada de API: $e");
   }
-}
-
-Future<bool> checkInternetConnection() async {
-  var connectivityResult = await Connectivity().checkConnectivity();
-  return connectivityResult != ConnectivityResult.none;
 }

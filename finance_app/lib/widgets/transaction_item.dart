@@ -1,11 +1,11 @@
+import 'package:finance_app/models/transaction.dart';
 import 'package:flutter/material.dart';
 
 
-class HistoryItem extends StatelessWidget {
-  const HistoryItem({super.key, required this.isTransaction, required this.value});
+class TransactionItem extends StatelessWidget {
+  const TransactionItem({super.key, required this.transaction,});
 
-  final bool isTransaction;
-  final double value;
+  final Transaction transaction;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class HistoryItem extends StatelessWidget {
         decoration: BoxDecoration(
             border: Border.all(color: Colors.black12),
             borderRadius: BorderRadiusDirectional.circular(50),
-            color: isTransaction ? Colors.green[300] : Colors.red[300],),
+            color: transaction.isDebt ? Colors.green[300] : Colors.red[300],),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -24,8 +24,8 @@ class HistoryItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Claudete", style: TextStyle(fontSize:18, fontWeight:FontWeight.bold)),
-                Text("${value.toStringAsFixed(2)} R\$", style: const TextStyle(fontSize: 18),)
+                Text(transaction.description, style: const TextStyle(fontSize:18, fontWeight:FontWeight.bold)),
+                Text("${transaction.value.toStringAsFixed(2)} R\$", style: const TextStyle(fontSize: 18),)
               ],
             ),
             const Text("Description: LOREM BLA BLA BLA BLA bla bla bla bla", softWrap: false,),
