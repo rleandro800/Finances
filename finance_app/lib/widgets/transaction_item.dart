@@ -20,15 +20,14 @@ class TransactionItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(transaction.description, style: const TextStyle(fontSize:18, fontWeight:FontWeight.bold)),
-                Text("${transaction.value.toStringAsFixed(2)} R\$", style: const TextStyle(fontSize: 18),)
+                SizedBox( width:180, child: Text(transaction.description, style: const TextStyle(fontSize:18, fontWeight:FontWeight.bold, overflow: TextOverflow.ellipsis ))),
+                Text("${transaction.value.toStringAsFixed(2)} R\$", style: const TextStyle(fontSize: 18, overflow: TextOverflow.ellipsis),)
               ],
             ),
-            const Text("Description: LOREM BLA BLA BLA BLA bla bla bla bla", softWrap: false,),
+            /*const Text("", softWrap: false,),*/
           ],
         ),
       ),

@@ -24,7 +24,7 @@ class Transaction {
       } =>
           Transaction(
             isDebt: isDebt,
-            description: description,
+            description: description.toUpperCase(),
             userName: userName,
             value:  value,
             createAt: createAt,
@@ -36,7 +36,7 @@ class Transaction {
   String toString() {
     return 'Transaction {\n'
         '  isDebt: $isDebt,\n'
-        '  email: $description,\n'
+        '  description: $description,\n'
         '  userName: $userName,\n'
         '  value: $value,\n'
         '  createAt: $createAt,\n'
