@@ -27,3 +27,21 @@ Future<List<Transaction>> getTransactions(int userId) async{
     throw Exception("Erro $e ao chamar a api");
   }
 }
+
+Future<int> postTransactions(Transaction newTransaction) async{
+  String url = "http://10.0.2.2:8000/api/transactions/";
+  try {
+    final basicAuth = dotenv.env['API_LIST'];
+    await checkInternetConnection();
+    final response = await http.post(
+      Uri.parse(url),
+      headers: {'Authorization': 'Basic $basicAuth'},
+      body: newTransaction.toString()
+    );
+    return response.statusCode;
+
+  }catch(e){
+    throw Exception("Aconteceu um erro: $e");
+  }
+
+}
