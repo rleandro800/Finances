@@ -4,7 +4,7 @@ from .views import UsersViewSet, UsersTransactionList, TransactionViewSet
 
 router = routers.DefaultRouter()
 router.register('users', UsersViewSet, basename='Users')
-router.register('transaction', TransactionViewSet, basename='Transaction')
+router.register('transactions', TransactionViewSet, basename='Transactions')
 
 urlpatterns = [
     path('', include(router.urls)),
