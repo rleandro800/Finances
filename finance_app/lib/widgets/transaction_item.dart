@@ -16,15 +16,15 @@ class TransactionItem extends StatelessWidget {
         decoration: BoxDecoration(
             border: Border.all(color: Colors.black12),
             borderRadius: BorderRadiusDirectional.circular(50),
-            color: transaction.isDebt ? Colors.green[300] : Colors.red[300],),
+            color: transaction.isDebt ?  Colors.red[300] :Colors.green[300],),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox( width:180, child: Text(transaction.description, style: const TextStyle(fontSize:18, fontWeight:FontWeight.bold, overflow: TextOverflow.ellipsis ))),
-                Text("${transaction.value.toStringAsFixed(2)} R\$", style: const TextStyle(fontSize: 18, overflow: TextOverflow.ellipsis),)
+                SizedBox( width:150, child: Text(transaction.description, style: const TextStyle(fontSize:18, fontWeight:FontWeight.bold, overflow: TextOverflow.ellipsis ))),
+                Text("${transaction.value.toStringAsFixed(2)} R\$", style: const TextStyle(fontSize: 18, overflow: TextOverflow.fade),)
               ],
             ),
             /*const Text("", softWrap: false,),*/

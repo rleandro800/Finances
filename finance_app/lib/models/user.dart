@@ -17,6 +17,7 @@ class User {
     required this.createAt,
   });
 
+  @override
   factory User.fromJson(Map<String, dynamic> json) {
     return switch (json) {
       {
