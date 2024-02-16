@@ -1,3 +1,4 @@
+import 'package:finance_app/screens/new_transaction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'screens/historic_screen.dart';
@@ -8,13 +9,14 @@ void main() async {
     await dotenv.load(fileName: '.env');
     runApp(const MyApp());
   } catch (e) {
-    print("Erro ao carregar o arquivo .env: $e");
+    throw Exception("Erro ao carregar o arquivo .env: $e");
   }
 }
 
+
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,7 +25,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Finances'),
+      home: const HistoricScreen(title: 'Finances'),
+      routes: <String, WidgetBuilder> {
+        '/a': (BuildContext context) => const HistoricScreen(title: 'page A'),
+        '/b': (BuildContext context) => const NewTransactionScreen(),
+      },
     );
   }
 }
