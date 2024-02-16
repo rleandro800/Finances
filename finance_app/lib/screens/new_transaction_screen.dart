@@ -1,3 +1,4 @@
+import 'package:finance_app/widgets/transaction_form.dart';
 import 'package:flutter/material.dart';
 
 class NewTransactionScreen extends StatelessWidget {
@@ -10,9 +11,7 @@ class NewTransactionScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("a"),
       ),
-      body: const Column(
-        children: [Text("Isso ai")],
-      ),
-    );
+        body: const TransactionForm(),
+      );
   }
 }

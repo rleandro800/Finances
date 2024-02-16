@@ -62,7 +62,7 @@ class _TransactionListState extends State<TransactionList> {
         ),
         FloatingActionButton(
           onPressed: () {
-            Transaction newTransaction = const Transaction(id: null, isDebt: false, description: "payment", userId: 1, value: 2500.00, createAt: '2024-02-12');
+            Transaction newTransaction = const Transaction(isDebt: false, description: "payment", userId: 1, value: 2500.00);
             postTransactions(newTransaction);
             reloadList();
           },

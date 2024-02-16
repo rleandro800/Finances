@@ -1,3 +1,5 @@
+
+
 import 'package:finance_app/models/user.dart';
 import 'package:finance_app/widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +48,7 @@ class HistoricScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: "btn1",
         onPressed: () {
           Navigator.pushNamed(context, '/b');
         },

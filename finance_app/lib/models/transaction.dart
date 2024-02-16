@@ -7,12 +7,12 @@ class Transaction {
   final String? createAt;
 
   const Transaction({
-    required this.id,
+    this.id,
+    this.createAt,
     required this.isDebt,
     required this.description,
     required this.userId,
     required this.value,
-    required this.createAt,
   });
 
   factory Transaction.fromJson(Map<String, dynamic> json) {
