@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       home: const HistoricScreen(title: 'Finances'),
       routes: <String, WidgetBuilder> {
         '/a': (BuildContext context) => const HistoricScreen(title: 'page A'),
-        '/b': (BuildContext context) => const NewTransactionScreen(),
+        '/b': (BuildContext context) =>  NewTransactionScreen(title: 'Adicionar Saldo', isDebt: false,),
       },
     );
   }
