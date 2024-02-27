@@ -65,7 +65,7 @@ class _TransactionFormState extends State<TransactionForm> {
             ElevatedButton(onPressed:(){
               if( description != null && value != null){
                 Transaction newTransaction = Transaction(isDebt: isDebt, description: description.text, userId: 1, value: double.parse(value.text));
-                postTransactions(newTransaction);
+                TransactionApi.postTransactions(newTransaction);
                 //reloadList();
               }
               print(double.parse(value.text));

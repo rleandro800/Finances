@@ -17,14 +17,14 @@ class _TransactionListState extends State<TransactionList> {
 
   @override
   void initState(){
-    transactions = getTransactions(1);
+    transactions = TransactionApi.getTransactions(1);
     super.initState();
   }
 
  void reloadList() async{
    await Future.delayed(const Duration(seconds: 1));
     setState(() {
-      transactions = getTransactions(1);
+      transactions = TransactionApi.getTransactions(1);
     });
   }
 
@@ -60,13 +60,6 @@ class _TransactionListState extends State<TransactionList> {
             },
           ),
         ),
-        FloatingActionButton(
-          onPressed: () {
-            Transaction newTransaction = const Transaction(isDebt: false, description: "payment", userId: 1, value: 2500.00);
-            postTransactions(newTransaction);
-            reloadList();
-          },
-        )
       ],
     );
   }

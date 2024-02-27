@@ -1,13 +1,8 @@
-
-
-import 'dart:convert';
-
 import 'package:finance_app/models/user.dart';
 import 'package:finance_app/widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
 import 'package:finance_app/services/user_api.dart';
 
-import '../models/transaction.dart';
 
 class HistoricScreen extends StatelessWidget {
   const HistoricScreen({super.key, required this.title});
@@ -52,7 +47,7 @@ class HistoricScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         heroTag: "btn1",
         onPressed: () {
-          Navigator.pushNamed(context, '/b');
+          Navigator.pushNamed(context, '/addTransaction');
         },
       ),
     );

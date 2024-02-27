@@ -4,6 +4,8 @@ import 'connection.dart';
 import 'package:http/http.dart' as http;
 
 class ApiUtils {
+
+  static final _basicAuth = dotenv.env['API_BASIC'];
   /// Fetches data from an API endpoint and returns it as a map.
   ///
   /// Usage:
@@ -14,12 +16,11 @@ class ApiUtils {
   /// [url]: The URL of the API endpoint to fetch data from.
   static Future<Map<String, dynamic>?> getDataAsMap(String url) async {
     try {
-      final basicAuth = dotenv.env['API_BASIC'];
       await checkInternetConnection();
 
       final response = await http.get(
         Uri.parse(url),
-        headers: {'Authorization': 'Basic $basicAuth'},
+        headers: {'Authorization': 'Basic $_basicAuth'},
       );
       if (response.statusCode == 200) {
         return jsonDecode(response.body) as Map<String, dynamic>;
@@ -44,12 +45,11 @@ class ApiUtils {
   /// [body]: The data to be sent as the request body, encoded as a JSON map.
   static Future<int> postData(String url, Map<String, dynamic> body) async {
     try {
-      final basicAuth = dotenv.env['API_BASIC'];
       await checkInternetConnection();
       final response = await http.post(
         Uri.parse(url),
-        headers: <String, String>{
-          'Authorization': 'Basic $basicAuth',
+        headers:{
+          'Authorization': 'Basic $_basicAuth',
           'Content-Type': 'application/json; charset=UTF-8'
         },
         body: jsonEncode(body),
@@ -59,4 +59,24 @@ class ApiUtils {
       throw Exception("An error occurred: $e");
     }
   }
+
+  static Future<int> deleteData(String url) async {
+     final basicAuth = dotenv.env['API_BASIC'];
+    try {
+
+      await checkInternetConnection();
+      final response = await http.delete(
+        Uri.parse(url),
+        headers: <String, String> {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'Basic $basicAuth',
+        }
+      );
+      print(response.headersSplitValues);
+      return response.statusCode;
+    }catch(e) {
+      throw Exception("An error occurred: $e");
+    }
+  }
+
 }
