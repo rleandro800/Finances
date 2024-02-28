@@ -37,7 +37,7 @@ The Financial App project is currently under development, with a focus on creati
 
 `PATCH /api/transaction/<id>` - Partially update transaction with specified ID.
 
-`GET get-users-transaction/<int:pk>/transaction` - Retrieve transactions for a specific user (identified by their primary key).
+`GET /api/get-users-transaction/<int:pk>/transaction` - Retrieve transactions for a specific user (identified by their primary key).
 
 
 ### Note:
