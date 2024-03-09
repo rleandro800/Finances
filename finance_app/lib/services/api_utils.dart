@@ -72,7 +72,6 @@ class ApiUtils {
           'Authorization': 'Basic $basicAuth',
         }
       );
-      print(response.headersSplitValues);
       return response.statusCode;
     }catch(e) {
       throw Exception("An error occurred: $e");

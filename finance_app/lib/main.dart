@@ -1,4 +1,6 @@
+import 'package:finance_app/screens/login_screen.dart';
 import 'package:finance_app/screens/new_transaction_screen.dart';
+import 'package:finance_app/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'screens/historic_screen.dart';
@@ -28,7 +30,9 @@ class MyApp extends StatelessWidget {
       home: const HistoricScreen(title: 'Finances'),
       routes: <String, WidgetBuilder> {
         '/historicScreen': (BuildContext context) => const HistoricScreen(title: 'page A'),
-        '/addTransaction': (BuildContext context) =>  NewTransactionScreen(title: 'Adicionar Saldo', isDebt: false,),
+        '/addTransaction': (BuildContext context) => RegisterScreen()
+        //(BuildContext context) => LoginScreen()
+        //(BuildContext context) =>  NewTransactionScreen(title: 'Adicionar Saldo', isDebt: false,),
       },
     );
   }
